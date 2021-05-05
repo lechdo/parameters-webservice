@@ -1,0 +1,130 @@
+{% extends 'params/base.html' %}
+
+{% block body %}
+
+    <div>
+        <a type="button" href="/">Retour</a>
+    </div>
+
+    {#  block de base  #}
+
+    <br>
+    <h2>Détail du testcase</h2>
+    <table class="table table-striped table-bordered">
+        <tr class="thead-dark">
+            <th>Clé</th>
+            <th>Instance</th>
+            <th>Service</th>
+            <th>Tags</th>
+        </tr>
+        <tr>
+            <td>{{ testcase.name }}</td>
+            <td>{{ testcase.instance }}</td>
+            <td>{{ testcase.service }}</td>
+            <td>
+                <ul>
+                    {% for tag in tags %}
+                        <li>{{ tag.text }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+    {#    block du parametre checkflow#}
+    {% if checkflowparams %}
+        <br>
+        <h2><u>Détail des paramètres checkflow</u></h2>
+        <br>
+        {% for params in checkflowparams %}
+
+            <table class="table table-striped table-bordered">
+
+                <h4>{{ params.key }} :</h4>
+
+                <tr class="bg-info">
+                    <th>Paramètre</th>
+                    <th>Valeur</th>
+                </tr>
+                <tr>
+                    <td>Clé</td>
+                    <td>{{ params.key }}</td>
+                </tr>
+                <tr>
+                    <td>flow application code</td>
+                    <td>{{ params.flow_application_code }}</td>
+                </tr>
+                <tr>
+                    <td>Serveur</td>
+                    <td>{{ params.server.name }}</td>
+                </tr>
+                <tr>
+                    <td>Statut à vérifier</td>
+                    <td>{{ params.status_to_check }}</td>
+                </tr>
+                <tr>
+                    <td>Fichiers attendus</td>
+                    <td>
+                        {% if params.expected_files %}
+                            Oui
+                        {% else %}
+                            Non
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>{{ params.label }}</td>
+                </tr>
+
+            </table>
+        {% endfor %}
+    {% else %}
+        <h4>Pas de paramètres CheckFlow.</h4>
+    {% endif %}
+
+    {% if compare_params %}
+        <br>
+        <h2><u>Détail des paramètres de comparaison</u></h2>
+        <br>
+        {% for params in compare_params %}
+
+            <table class="table table-striped table-bordered">
+
+                <h4>{{ params.key }} :</h4>
+
+                <tr class="bg-info">
+                    <th>Paramètre</th>
+                    <th>Valeur</th>
+                </tr>
+                <tr>
+                    <td>Clé</td>
+                    <td>{{ params.key }}</td>
+                </tr>
+                <tr>
+                    <td>path de l'attendu</td>
+                    <td>{{ params.expected }}</td>
+                </tr>
+                <tr>
+                    <td>path du résultat</td>
+                    <td>{{ params.outgoing }}</td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>{{ params.label }}</td>
+                </tr>
+
+            </table>
+        {% endfor %}
+    {% else %}
+        <h4>Pas de paramètres de comparaison.</h4>
+    {% endif %}
+
+
+    <div>
+        <a type="button" href="/">Retour</a>
+    </div>
+    <br>
+
+
+{% endblock %}

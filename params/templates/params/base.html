@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TestCases</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'params/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'params/style.css' %}">
+</head>
+
+<body>
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="/">TestCases</a>
+    <a href="/runscript">Run Script</a>
+    <a href="/admin" class="text-danger">Admin Mode</a>
+</div>
+
+<div class="container">
+
+    <div class="d-flex justify-content-between">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="col-2">&#9776;</span>
+        <h1 class="col-8">{{ PAGE_TITLE }}</h1>
+    </div>
+
+{%  block body %}
+
+{% endblock %}
+</div>
+
+</body>
+<script src="{% static 'params/bootstrap/js/jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static 'params/bootstrap/js/popper.min.js' %}"></script>
+<script src="{% static 'params/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'params/sidebar.js' %}"></script>
+</html>
+
+
+
+
+
